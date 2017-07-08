@@ -58,3 +58,7 @@ Forward Iterator另外一个重要的性质是**同一性(identity)**. 如果p =
 Bidirectional Iterator支持双向移动，可以累加获得下一个元素，也可以累减获得前一个元素。
 
 #### 3.5 Random Access Iterators
+RAT覆盖了其他所有的指针运算，包括`p+n`, `p-n`, `p[n]`, `p1-p2`, 作者在书中提到，RAT的设计主要是为了降低操作的复杂度`p+10000`可以通过移动指针一步到位，而不用反复的`p++`
+
+### 4. Refinement
+如果Concept1提供Concept2的所有功能，并且加上了额外的功能，我们就认为Concept1是Concept2的一个Refinement. 一个type可以是多个concept的model, 而一个concept又可以是多个concept的refinement. 
