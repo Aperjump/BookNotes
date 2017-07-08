@@ -49,3 +49,12 @@ Output Iterator作用和Input Iterator恰好相反，以Output Iterator写入连
 STL中：`insert_iterator`, `front_insert_iterator`, `ostream_iterator`
 
 #### 3.3 Forward Iterator
+Forward Iterator = Input Iterator + Output Iterator
+可以用在multi-pass算法中，一个Input Iterator类型的迭代器的几个副本之间不是相互独立的，如果其中一个进行了++操作，那么其他几个可能就不指向原来的元素了，而 ForwardI terator 的几个副本是可以独立操作。
+
+Forward Iterator另外一个重要的性质是**同一性(identity)**. 如果p == q, 则`*p == *q`, 且p,q指向同一个对象
+
+#### 3.4 Bidirectional Iterator
+Bidirectional Iterator支持双向移动，可以累加获得下一个元素，也可以累减获得前一个元素。
+
+#### 3.5 Random Access Iterators
