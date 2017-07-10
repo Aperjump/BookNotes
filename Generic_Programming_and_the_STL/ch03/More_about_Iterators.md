@@ -65,3 +65,5 @@ struct iterator{
   typedef Pointer pointer;
   typedef Reference reference;
 };
+
+**Note** iterator 应该是constant或者mutable, 两者的主要差别在于reference type和pointer type是T& 和T*, 或者是const T&和const T*.
