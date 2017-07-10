@@ -36,3 +36,32 @@ C++中的type inference机制非常有趣，只能作用于arugment上，而不�
         result += *first;
       return result;
     }
+
+#### 1.2 Difference Type
+
+    template <class InputIterator, class T>
+    typename iterator_traits<InputIterator>::difference_type
+    count(InputIterator first, InputIterator last, const T& x){
+      typename iterator_traits<InputIterator>::difference_type n = 0;
+      for (; first != last; ++first)
+        ++n;
+      return n;
+    }
+
+#### 1.3 Reference Type and Pointer Type
+处理方式类似的使用iterator_traits的方法
+
+#### 1.4 Iterator tags
+当同一算法遇上不同的Iterator时，可以进行“重载”，但是C++本身是不能够重载**concepts**, 因此就提供了一个**iterator_tag**来区分各种Iterator， 这样就出现了iterator_category.
+
+每当我们定义一个新的iterator class时，就必须在这个class中定义五个嵌套型别：iterator_category, value_type, difference_type, pointer, reference, 要不就要针对class，让iterator_traits进行特化。
+
+
+template<class Category, class Value, class Distance = ptrdiff_t, class Reference = Value&>
+struct iterator{
+  typedef Category iterator_category;
+  typedef Value value_type;
+  typedef Distance difference_type;
+  typedef Pointer pointer;
+  typedef Reference reference;
+};
