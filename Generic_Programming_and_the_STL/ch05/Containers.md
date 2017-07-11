@@ -81,4 +81,28 @@ STL定义了两种大小可变的container, **Sequence Container**和**Associati
 #### (1) Sequence Container
 Sequence Container是Forward Container的一个refinement.
 Sequence必须具备**insert**和**erase**, insert(p, x)会将x插到p元素之前。
+但是在插入元素的过程中会对其他元素造成怎样的影响呢？对于不同的Sequence问题答案不同。
+同样，将元素insert到开头和尾端也会造成不同的算法复杂度。
+因此出现了Sequence的两个Refinement: Back Insertion Sequence和Front Insert Sequence
+Front Insert Sequence有三种member functions: 
+- front() 返回container的第一个元素
+- push_front() 
+- pop_front()
+
+Back Insertion Sequence
+- back()
+- push_back()
+- pop_bakc()
+
+
+#### (2) Associative Container
+Associative Container的目的在位于快速的查询元素，`find`, `find_if`找到元素的复杂度为O(N), 但是如果元素的组织方式不同，可以降为O(logN)。
+Associative Container的基本操作为`lookup`, `insertion`, `erase`。
+- 每个元素都有key, 多了一个key type, 每个type为value_type都合一个key_type相关联
+两种refinement : Simple Associative Container其value_type和key_type相同，另一种是Pair Associative container, value_type形式为`pair<const Key, T>
+- 同key,不同元素，两个refinement, Multiple Associative Container和Unique Associative Container
+- 元素排列方式：Hashed Associative Container根据hash table组织，含有一个嵌套type, 为function object, 作为hash function, 另一种为Sorted Associative Container,具有一个function object不过为Binary Predicate
+
+以上三种差异具有正交性(Orthogonal), set属于Sorted Associative Container, Unique Associative Container和Simple Associative Container。
+
 
